@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing</title>
+    <style>
+        #get {
+            border-left: 2px solid black;
+            padding: 20px;
+            position: absolute;
+            left: 220px;
+            top: 120px
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #d5f5d0;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: #fff;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #666;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .contact {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .main-section {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            margin-left: 100px;
+            margin-right: 100px;
+            background: linear-gradient(rgba(255, 255, 255, 0.782), rgb(255, 255, 255)), url(bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 1;
+            box-shadow: 0 22px 19px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-text {
+            max-width: 50%;
+
+        }
+
+        .main-text h1 {
+            font-size: 48px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+
+        .main-text h1 span {
+            color: #000;
+        }
+
+        .main-text button {
+            top: 180px;
+            padding: 10px 40px;
+            background: #000;
+            color: #fff;
+            border: none;
+            position: relative;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .main-text button:hover {
+            background: #555;
+        }
+
+        .main-image {
+            position: relative;
+        }
+
+        .main-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        footer .social-icons {
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="logo"><span><img src="logo.png" alt=""></span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Upcoming Treks</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="contact">Call Now: 1800 888 555</div>
+    </header>
+
+    <section class="main-section">
+        <div class="main-text">
+            <b>I WANT <br>TO GO <br>HIKING</b><br>
+            <h1>
+                <div id="get">GET OUT <br>NOW </div>
+            </h1>
+            <button><b>GET STARTED</b></button>
+            <br><br>
+            <img src="logo2.png" alt="logo2.png">
+            <b style="font-size:x-small;">&nbsp; JOIN US FOR THE WEEKEND TO CLIMB THE HIGHEST PEAK IN ENGLAND</b>
+            &nbsp; &nbsp; <br><br>
+            <br><br><br><br>
+            <p><br><br> &copy; Company Name 2020. All rights reserved.</p>
+            <div class="social-icons">
+                &nbsp &nbsp<i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+
+        </div>
+        <div class="main-image">
+            <img src="Hiker.png" alt="Hiker">
+        </div>
+
+        <br>
+
+
+    </section>
+
+    <footer>
+
+
+
+    </footer>
+</body>
+
+</html>

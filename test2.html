@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Element Example</title>
+</head>
+<body>
+  <h2>Dynamic Element Creation</h2>
+  <button id="createBtn">Create Element</button>
+  <div id="container"></div>
+
+  <script>
+    index=0;
+    // Select the button and container
+    const createButton = document.getElementById("createBtn");
+    const container = document.getElementById("container");
+
+    // Add click event listener to the button
+    createButton.addEventListener("click", () => {
+      // Create a new element
+      const newElement = document.createElement("p");
+      
+      
+      // Set attributes and content
+      newElement.textContent = "This is a dynamically created paragraph.";
+      newElement.style.color = "blue";
+      newElement.style.fontSize = "16px";
+
+      // Append the new element to the container
+      container.appendChild(newElement);
+    });
+  </script>
+</body>
+</html>

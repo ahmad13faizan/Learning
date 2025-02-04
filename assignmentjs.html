@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h2 id="heading">Student Marks Table</h2>
+    <button onclick="add()">
+        Add Student
+    </button>
+    <br>
+    <br>
+    <div>
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Subject 1</th>
+                    <th>Subject 2</th>
+                    <th>Subject 3</th>
+                    <th>Subject 4</th>
+                    <th>Subject 5</th>
+                    <th>Total Marks</th>
+                    <th>Average Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+    
+
+    <style>
+        div{
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        table{
+          
+            border-collapse: collapse;
+           
+        }
+        th{
+            padding: 1% 11px;
+            font-size: 95%;            
+
+        }
+    </style>
+    <script>
+        function add(){
+            val=true
+            while(val){
+                const regex = /^[A-Za-z]+$/;
+                userinput=prompt("Enter student's name (value should not be empty)")
+                if(userinput===null){
+                    return
+                }else if(regex.test(userinput)){
+                    val=false
+                }else{
+                alert("invalid input")
+                }
+            }
+            row =document.getElementsByTagName('table')[0].insertRow()
+              sum=0
+              ans=0
+            
+            row.insertCell(0).textContent=userinput
+            for (  index = 1; index <= 5; index++){
+                val=true
+            while(val){
+                ans=prompt("Enter subject"+index)
+                if(ans===null){
+                    return
+                }
+                else if(ans==false){
+                alert("invalid input: please enter between 0 to 100")
+                }
+                else if(ans>=0 && ans<=100) {
+                    val=false
+                }else {
+                alert("invalid input: please enter between 0 to 100")
+                }
+            }
+                row.insertCell(index).textContent=ans; 
+                if(ans){
+                sum+=parseInt(ans)
+                }
+                
+            }
+            row.insertCell(6).textContent=sum
+            row.insertCell(7).textContent=sum/5
+          
+
+        }
+    </script>
+
+</body>
+</html>

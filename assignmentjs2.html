@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <form action="">
+      <label for="name">Name</label>
+      <br />
+      <input type="text" id="name" />
+      <br />
+      <label for="age">Age</label>
+      <br />
+      <input type="text" id="age" />
+      <button onclick="check()" type="submit">Submit</button>
+
+      <div
+        style="margin: 2% 12%; padding: 3% 27%; background-color: gold"
+        id="color"
+        onmouseover="change('yellow')"
+        onmouseout="change('gold')"
+      >
+        Hover to change color
+      </div>
+    </form>
+
+    <script>
+      function change(color) {
+        document.getElementById("color").style.background = color;
+      }
+      function check() {
+        alert(document.getElementById("name").value);
+        if (
+          document.getElementById("name").value != "" &&
+          parseInt(document.getElementById("age").value) >= 18
+        ) {
+          alert("form submitted succsfully");
+        } else {
+          alert(
+            "please check your values your name should not be empty and age should be greater than 17"
+          );
+        }
+      }
+
+      arr = [1, 2, 3, 4, 5, 3];
+      console.log("Initial array: " + arr);
+      no = 6;
+      arr.push(no);
+      console.log("after appending 6 to last of array: " + arr);
+      arr.shift();
+      console.log("after deleting from start of array: " + arr);
+      arr.indexOf("index of element 3 is: " + 3);
+
+      reversearray(arr);
+      replace();
+
+      function reversearray(arr) {
+        last = arr.length;
+        for (index = 0; index < arr.length / 2; index++) {
+          temp = arr[index];
+          arr[index] = arr[last];
+          arr[last] = temp;
+          last--;
+        }
+        console.log("after reverse: " + arr);
+      }
+
+      function replace() {
+        console.log("arr before replacing 3 with 8: " + arr);
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i] == 3) {
+            arr[i] = 8;
+          }
+        }
+        console.log("arr after replacing 3 with 8: " + arr);
+      }
+      for (index = 0; index < arr.length; index++) {
+        console.log(arr[index]);
+      }
+      index = 4;
+      arr.splice(index, 0, 2);
+
+      function bblSort(arr) {
+        for (var i = 0; i < arr.length; i++) {
+          for (var j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+              var temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+
+        console.log(arr);
+      }
+
+      bblSort(arr);
+      console.log(arr);
+    </script>
+  </head>
+  <body></body>
+</html>
