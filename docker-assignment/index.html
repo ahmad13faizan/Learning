@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            scroll-behavior: smooth;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .btn {
+            background: white;
+            color: #ff4b2b;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+        }
+        .section {
+            padding: 50px;
+            text-align: center;
+            background: #f4f4f4;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div>
+            <h1>Welcome to Our Interactive Landing Page</h1>
+            <button class="btn" onclick="scrollToSection()">Explore More</button>
+        </div>
+    </section>
+    <section class="section" id="content">
+        <h2>Engaging Content</h2>
+        <p>This section has more details with cool animations.</p>
+    </section>
+    <script>
+        function scrollToSection() {
+            document.getElementById("content").scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

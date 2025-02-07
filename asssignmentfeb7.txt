@@ -1,0 +1,39 @@
+7.option B  =>
+
+if(user.getAddress()!==null &&  "Main St".equals(user.getAddress().getStreet())) {
+System.out.println("User lives on main street")
+}
+
+
+because applying &&  condition would not do unnecassary calls if ,ost imp requirement fails
+
+
+
+
+
+8.
+option B
+
+class BankAccount{
+
+private double balance;
+
+public double getBalance(){
+	return balance;
+}
+
+public void deposit (double amount){
+	if(amount > 0){
+	balance+=amount;
+	}
+}
+
+}
+
+
+Because in this way there are detailed specific scenarios for tasks
+
+
+
+
+9. option 
