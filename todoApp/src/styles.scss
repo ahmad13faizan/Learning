@@ -1,0 +1,10 @@
+// src/styles.scss
+$primary-color: #3498db;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: $primary-color;
+  margin: 0;
+  padding: 20px;
+}
