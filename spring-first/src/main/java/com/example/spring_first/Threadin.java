@@ -2,7 +2,7 @@ package com.example.spring_first;
 
 class Threadin{
 
-     synchronized static void table(int no,int iterator) {
+      static void table(int no,int iterator) {
          if (iterator == 11) {
              return;
          }

@@ -1,174 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-    <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+    <title>TODO App</title>
+</head>
+<body>
     <div id="main">
-    <h2>TODO</h2>
-    
-    <div id="task">
-      <input type="text" id="enter-task" placeholder="Enter the new task" />
-      <button id="task-add">Add new task</button>
+        <h2>TODO</h2>
 
-    <select name="filter" id="filter">
-      <option value="filter">Apply Filter</option>
-      <option value="donels">Done</option>
-      <option value="not-done">Not Done</option>
-      <option value="remove">All</option>
-    </select>
+        <div id="task">
+            <input type="text" id="enter-task" placeholder="Enter the new task" />
+            <button id="task-add">Add new task</button>
 
-    <button id="clear">
-        Clear all
-    </button>
-    </div>
+            <select name="filter" id="filter">
+                <option value="all">All</option>
+                <option value="done">Done</option>
+                <option value="not-done">Not Done</option>
+            </select>
 
-    <div id="task-list">--------Task List---------</div>
-    <div id="tasks"></div>
-    <script>
+            <button id="clear">Clear all</button>
+        </div>
 
-      var index = 1;
+        <div id="task-list">--------Task List---------</div>
+        <div id="tasks"></div>
 
-       let count = localStorage.getItem("reloadCount");
+        <script>
+            let index = localStorage.length ? Math.max(...Object.keys(localStorage).map(Number)) + 1 : 101;
 
-       if(count==101)
-        {        
-        count = Number(count) - 1
-        }
+            document.getElementById("enter-task").addEventListener('keypress', add);
+            document.getElementById("task-add").addEventListener('click', add);
+            document.getElementById('clear').addEventListener('click', removeAll);
+            document.getElementById('filter').addEventListener('change', applyFilter);
 
+            function add(e) {
+                if (e.key === "Enter" || e.type === "click") {
+                    let enterTask = document.getElementById("enter-task");
+                    let input = enterTask.value.trim();
 
-        // If no count exists, set it to 0
-        if (!count) {
-            count = 101;
-        }
-        // Update localStorage with the new count
-        localStorage.setItem("reloadCount", count);
-        console.log(count)
-
-
-        let init = localStorage.getItem("init");
-
-        // If no count exists, set it to 0
-        if(!init) {
-            init = 0;
-        }
-
-        // Convert count to a number and increment it
-        init = Number(init) + 1;
-      
-      
-
-
-      for (let i = 1; i<=(localStorage.length)+100; i++) {
-
-        let newElement = document.createElement("h1");  
-        let btn=document.createElement('button')
- 
-        if(localStorage.getItem(i)){
-        btn.textContent="Done: "+ i
-        newElement.id="t"+(i+100)
-        btn.setAttribute('done','no')
-          
-        newElement.textContent =  localStorage.getItem(i)
-        newElement.style.fontSize = "16px";
-
-        let div=document.createElement('div')
-        div.id=i
-        div.appendChild(newElement)
-        div.appendChild(btn)
-
-        div.style.display="flex";
-        div.style.justifyContent="space-between"
-
-        btn.id=i+100;
-        btn.addEventListener('click',remove)
-
-        document.getElementById("tasks").append(div);
-        }
-        
-      }
-      
-  
-      
-      document
-        .getElementById("enter-task")
-        .addEventListener('keypress', add)
-
-        document
-        .getElementById("task-add")
-        .addEventListener('click', add)
-
-        index2=localStorage.length
-        function add(e){
-           
-        if(e.key==="Enter" || event.type==="click"){
-          enterTask=document.getElementById("enter-task");
-          input=enterTask.value
-
-          if (input !== ""){
-
-          localStorage.setItem(index2,input)
-          let newElement = document.createElement("h1");
-          let btn=document.createElement('button')
-
-          btn.textContent="Done: "+ index2
-          newElement.id="t"+(index2+100)
-          btn.setAttribute('done','no')
-          
-          newElement.textContent =  input
-          newElement.style.fontSize = "16px";
-          
-
-          let div=document.createElement('div')
-          div.id=index2
-          div.appendChild(newElement)
-          div.appendChild(btn)
-
-          div.style.display="flex";
-          div.style.justifyContent="space-between"
-
-          enterTask.value=""
-
-          btn.id=index2+100;
-          btn.addEventListener('click',remove)
-
-          
-          document.getElementById("tasks").append(div);
-         index2++
-
-         }
-        }
-      }
-
-        function remove(event){
-            if(event.target.getAttribute('done')=='no'){
-                document.getElementById(event.target.id).innerHTML="Remove"
-                document.getElementById("t"+event.target.id).style.textDecoration="line-through"
-                event.target.setAttribute('done','yes')
-                
-            }else{
-            document.getElementById(parseInt(event.target.id)-100).remove()
-            console.log(event.target.id)
-            localStorage.removeItem((parseInt(event.target.id)- 100))
-            console.log("removelast")
-          
+                    if (input !== "") {
+                        localStorage.setItem(index, JSON.stringify({ text: input, done: false }));
+                        createTaskElement(index, input, false);
+                        enterTask.value = "";
+                        index++;
+                    }
+                }
             }
-            
-        }
 
-        document.getElementById('clear').addEventListener('click',removeAll)
-        
-        
-        function removeAll(){
-          index=0;
-            document.getElementById('tasks').innerHTML=""
-            localStorage.clear()
-            location.reload()
-        }
-    </script>
+            function createTaskElement(id, text, done) {
+                let div = document.createElement('div');
+                div.id = id;
+                div.className = done ? "task done" : "task not-done";
+
+                let taskText = document.createElement("h1");
+                taskText.textContent = text;
+                taskText.style.fontSize = "16px";
+                if (done) taskText.style.textDecoration = "line-through";
+                
+                let btn = document.createElement('button');
+                btn.textContent = done ? "Remove" : "Done: " + id;
+                btn.setAttribute('data-id', id);
+                btn.setAttribute('done', done);
+                btn.addEventListener('click', toggleDone);
+                
+                div.appendChild(taskText);
+                div.appendChild(btn);
+                document.getElementById("tasks").append(div);
+            }
+
+            function toggleDone(event) {
+                let btn = event.target;
+                let taskId = btn.getAttribute('data-id');
+                let taskData = JSON.parse(localStorage.getItem(taskId));
+                let taskElement = document.getElementById(taskId);
+
+                if (btn.getAttribute('done') === 'false') {
+                    taskData.done = true;
+                    btn.textContent = "Remove";
+                    btn.setAttribute('done', 'true');
+                    taskElement.classList.replace("not-done", "done");
+                    taskElement.firstChild.style.textDecoration = "line-through";
+                } else {
+                    taskElement.remove();
+                    localStorage.removeItem(taskId);
+                }
+                localStorage.setItem(taskId, JSON.stringify(taskData));
+            }
+
+            function removeAll() {
+                localStorage.clear();
+                document.getElementById('tasks').innerHTML = "";
+            }
+
+            function applyFilter() {
+                let filterValue = document.getElementById('filter').value;
+                let tasks = document.querySelectorAll(".task");
+                tasks.forEach(task => {
+                    if (filterValue === "all") {
+                        task.style.display = "flex";
+                    } else if (filterValue === "done" && task.classList.contains("done")) {
+                        task.style.display = "flex";
+                    } else if (filterValue === "not-done" && task.classList.contains("not-done")) {
+                        task.style.display = "flex";
+                    } else {
+                        task.style.display = "none";
+                    }
+                });
+            }
+
+            // Load tasks from localStorage
+            for (let key in localStorage) {
+                if (!isNaN(key)) {
+                    let taskData = JSON.parse(localStorage.getItem(key));
+                    createTaskElement(key, taskData.text, taskData.done);
+                }
+            }
+        </script>
     </div>
-  </body>
+</body>
 </html>

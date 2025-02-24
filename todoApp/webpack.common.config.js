@@ -7,23 +7,23 @@ module.exports = {
   output: {
     filename: 'bundle.[contenthash].js', // Uses content hashing for cache busting
     path: path.resolve(__dirname, 'dist'),
-    clean: true, // Automatically clean the output directory before each build
+    clean: true // Automatically clean the output directory before each build
   },
   module: {
     rules: [
       {
         test: /\.js$/, // Process JavaScript files
         exclude: /node_modules/,
-        use: 'babel-loader', // (Optional) If you want to transpile modern JS
+        use: 'babel-loader' // (Optional) If you want to transpile modern JS
       }
       // SCSS handling is configured differently for development and production.
-    ],
+    ]
   },
   plugins: [
     // ESLintPlugin ensures ESLint runs automatically before bundling.
     new ESLintPlugin({
-      extensions: ['js'],
+      extensions: ['js']
       // Optionally enable auto-fixing: fix: true
-    }),
-  ],
+    })
+  ]
 };
