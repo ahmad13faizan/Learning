@@ -26,7 +26,7 @@
         <div id="tasks"></div>
 
         <script>
-            let index = localStorage.length ? Math.max(...Object.keys(localStorage).map(Number)) + 1 : 101;
+            let index = localStorage.length ? Math.max(...Object.keys(localStorage).map(Number)) + 1 : 1;
 
             document.getElementById("enter-task").addEventListener('keypress', add);
             document.getElementById("task-add").addEventListener('click', add);
@@ -85,6 +85,7 @@
                     localStorage.removeItem(taskId);
                 }
                 localStorage.setItem(taskId, JSON.stringify(taskData));
+                
             }
 
             function removeAll() {
@@ -93,6 +94,7 @@
             }
 
             function applyFilter() {
+               
                 let filterValue = document.getElementById('filter').value;
                 let tasks = document.querySelectorAll(".task");
                 tasks.forEach(task => {
@@ -106,6 +108,7 @@
                         task.style.display = "none";
                     }
                 });
+               
             }
 
             // Load tasks from localStorage

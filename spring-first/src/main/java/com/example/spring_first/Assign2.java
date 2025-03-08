@@ -12,7 +12,7 @@ public class Assign2 {
 }
 
 
-abstract class Employee{
+abstract class Employee2 {
     final private int id;
     final private float salary;
     abstract void calculateBonus();
@@ -22,14 +22,14 @@ abstract class Employee{
         return salary;
     }
 
-    Employee(int id,float salary){
+    Employee2(int id, float salary){
         this.id=id;
         this.salary=salary;
     }
 }
 
 
-class Manager extends Employee{
+class Manager extends Employee2 {
 
     Manager(int id, float salary){
         super(id, salary);
@@ -43,7 +43,7 @@ class Manager extends Employee{
 
 
 
-class Developer extends Employee{
+class Developer extends Employee2 {
     
     Developer(int id, int salary){
         super(id,salary);

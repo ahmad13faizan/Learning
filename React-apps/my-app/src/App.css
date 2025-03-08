@@ -1,0 +1,125 @@
+img{
+  width: 150px;
+}
+
+
+button {
+  background-image: linear-gradient( #1877F2,black);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+h4{
+  color:rgba(98, 211, 98, 0.767)
+}
+body{
+  color:white;
+ 
+  justify-content: center;
+}
+
+
+.reset{
+  background-image: linear-gradient( red,black );
+}
+
+
+.reset:hover {
+  background-image:linear-gradient( rgb(128, 12, 12),black);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(to top, transparent 0%, rgb(3, 3, 3) 100%);
+  filter: blur(9px); /* Adjust the blur level */
+  z-index: -1;
+}
+
+button:hover {
+  background-image: linear-gradient( darkblue,black );
+}
+
+
+.login-card,.signup-card {
+  margin-top:15% ;
+
+  border:3px solid;
+  box-shadow: 5px 5px 5px  0.05px rgb(66, 66, 66);
+  display: flex;
+  font-family: Roboto, sans-serif;
+  width: 350px;
+  padding: 4% 1% 3%;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+input{
+  border-radius: 5px;
+}
+
+form {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+form > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login{
+  margin-top: 15%;
+}
+
+.error{
+ color: red;
+}
+
+.light-theme {
+  --background-color:#ffffff79;
+  --text-color: #000000;
+}
+
+.dark-theme {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  height: 100vh;
+  width: 100wh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.loadedData {
+  width: 300px;
+  height: 200px;
+  border: 2px solid black;
+  overflow: auto; /* Enables scrolling if needed */
+}
